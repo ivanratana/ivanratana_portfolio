@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Ratana</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="image/logo_master_nobg.png" type="image/png">
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <script src="assets/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+</head>
+<body>
+ <!-- Landing Page -->
+ <header class="landing-section">
+    <div class="content">
+        <h1>Hi I'm Ivan Ratana</h1>
+        <p>and welcome to my portfolio</p>
+        <button class="text-black" id="scrollButton">Lets Go</button>
+    </div>
+</header>
+
+<!-- About -->
+<section class="about-section" id="about">
+    <h2>About Me</h2>
+    <img src="image/foto.jpg" alt="foto">
+    <p>
+        Hi, I'm Ivan Ratana Putra, a Junior Web Developer, 5th Semester majoring Computer Science at BINUS University.     
+        I am a highly motivated individual with a zest for new challenges.
+        <p class="fst-italic text-black">"Practice make progress"</p>
+    </p>
+</section>
+
+
+<!-- Portfolio Section -->
+<section class="portfolio-section" id="portfolio">
+    <h2>My Portfolio</h2>
+    <div class="portfolio-grid">
+
+        <!-- Project 1 -->
+        <div class="portfolio-item">
+            <h3>Project 1</h3>
+            <div class="image-slider-container" id="slider1">
+                <div class="image-size">
+                    <img src="image/karyawan1.png" alt="Project 1 Image 1" class="slider-image active">
+                    <img src="image/karyawan2.png" alt="Project 1 Image 2" class="slider-image">
+                    <img src="image/karyawan3.png" alt="Project 1 Image 3" class="slider-image">
+                    <img src="image/karyawan4.png" alt="Project 1 Image 4" class="slider-image">
+                    <img src="image/karyawan5.png" alt="Project 1 Image 5" class="slider-image">
+                    <img src="image/karyawan6.png" alt="Project 1 Image 6" class="slider-image">
+                    <img src="image/karyawan7.png" alt="Project 1 Image 7" class="slider-image">
+                    <img src="image/karyawanpdf.png" alt="Project 1 Image 8" class="slider-image">
+                </div>
+                
+
+                <div class="slider-buttons">
+                    <button class="slider-button" onclick="prevSlide(1)">Previous</button>
+                    <button class="slider-button" onclick="nextSlide(1)">Next</button>
+                </div>
+            </div>
+            <p>The website is about a list of employees joined with the job position table.
+                There is also a feature to add employees below the table using JavaScript. 
+                Employees can also be added using a provided Excel format, and there is an export feature available in Excel, PDF, and CSV formats.
+                The website is built using the Laravel framework.
+            </p>
+            <a href="https://github.com/ivanratana/project_karyawan" class="text-black">github</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="portfolio-item">
+            <h3>Project 2</h3>
+            <div class="image-slider-container" id="slider2">
+                <img src="image/project2/1.png" alt="Project 2 Image 1" class="slider-image active">
+                <img src="image/project2/3.png" alt="Project 2 Image 3" class="slider-image">
+                <img src="image/project2/4.png" alt="Project 2 Image 4" class="slider-image">
+                <img src="image/project2/5.png" alt="Project 2 Image 5" class="slider-image">
+                <img src="image/project2/6.png" alt="Project 2 Image 6" class="slider-image">
+                <img src="image/project2/7.png" alt="Project 2 Image 7" class="slider-image">
+                <img src="image/project2/8.png" alt="Project 2 Image 8" class="slider-image">
+                <img src="image/project2/9.png" alt="Project 2 Image 9" class="slider-image">
+                
+                <div class="slider-buttons">
+                    <button class="slider-button" onclick="prevSlide(2)">Previous</button>
+                    <button class="slider-button" onclick="nextSlide(2)">Next</button>
+                </div>
+            </div>
+            <p>The methods that were used as state of the art is custom CNN models
+                consist multiple convolutional layers followed by pooling layers, dropout layers for
+                regularization, and fully connected layers for classification.
+            </p>
+            <a href="https://github.com/ivanratana/CNN_BrainTumourPrediction" class="text-black">github</a>
+        </div>
+    </div>
+</section>
+ 
+    <!-- Smooth Scroll JS -->
+    <script>
+        document.getElementById('scrollButton').addEventListener('click', function () {
+            document.getElementById('portfolio').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Image Slider 
+        let currentIndexes = [0, 0];
+
+        function showImage(sliderId, index) {
+            const images = document.querySelectorAll(`#slider${sliderId} .slider-image`);
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function prevSlide(sliderId) {
+            const images = document.querySelectorAll(`#slider${sliderId} .slider-image`);
+            currentIndexes[sliderId - 1] = (currentIndexes[sliderId - 1] > 0)
+                ? currentIndexes[sliderId - 1] - 1
+                : images.length - 1;
+            showImage(sliderId, currentIndexes[sliderId - 1]);
+        }
+
+        function nextSlide(sliderId) {
+            const images = document.querySelectorAll(`#slider${sliderId} .slider-image`);
+            currentIndexes[sliderId - 1] = (currentIndexes[sliderId - 1] < images.length - 1)
+                ? currentIndexes[sliderId - 1] + 1
+                : 0;
+            showImage(sliderId, currentIndexes[sliderId - 1]);
+        }
+    </script>
+</body>
+<footer>
+    <p class="fw-bold fs-2">Contact me:</p>
+    <a class="btn btn-outline-light fst-italic" href="mailto:ivanratana13@gmail.com">Email 1</a>
+    <a class="btn btn-outline-light fst-italic" href="mailto:ivan.putra004@binus.ac.id">Email 2</a>
+</footer>
+</html>
